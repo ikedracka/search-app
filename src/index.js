@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { render } from 'react-dom';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import {
@@ -13,12 +13,81 @@ import {
 } from "@apollo/client";
 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const client = new ApolloClient({
+  uri: 'https://plheadless.wpengine.com/graphql/',
+  cache: new InMemoryCache(),
+  fetchOptions: {
+    mode: 'no-cors',
+  },
+});
+
+
+// client
+//   .query({
+//     query: gql`
+//       query MyQuery {
+//         posts {
+//           nodes {
+//             title
+//             content
+//           }
+//         }
+//       }
+//     `
+//   })
+//   .then(result => console.log(result));
+  
+const POSTS_QUERY = gql `
+  query MyQuery {
+          posts {
+            nodes {
+              title
+              content
+            }
+          }
+       }
+`;
+
+function Posts() {
+
+  const { loading, error, data } = useQuery(POSTS_QUERY);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  // return data.rates.map(({ currency, rate }) => (
+  //   <div key={currency}>
+  //     <p>
+  //       {currency}: {rate}
+  //     </p>
+  //   </div>
+  // ));
+  // return data.posts.nodes;
+  return data.posts.nodes.map(({title,content}) => (
+    <div key={title}>
+        <p>{content}</p>
+    </div>
+  ))
+}
+
+
+
+
+  function Hello() {
+    return (
+      <div>
+        <h2>Fetching posts 🚀</h2>
+      </div>
+    );
+  }
+  
+  render(
+    <ApolloProvider client={client}>
+      <Hello />
+      <Posts />
+    </ApolloProvider>,
+    document.getElementById('root'),
+  );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
