@@ -68,7 +68,7 @@ function Posts() {
   function Hello() {
     return (
       <div>
-        <h2>Fetching posts 🚀</h2>
+        <h2>Fetching posts from WordPress 🚀</h2>
       </div>
     );
   }
