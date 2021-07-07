@@ -54,17 +54,9 @@ function Posts() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
-  // return data.rates.map(({ currency, rate }) => (
-  //   <div key={currency}>
-  //     <p>
-  //       {currency}: {rate}
-  //     </p>
-  //   </div>
-  // ));
-  // return data.posts.nodes;
   return data.posts.nodes.map(({title,content}) => (
     <div key={title}>
+        <h3>{title}</h3>
         <p>{content}</p>
     </div>
   ))
