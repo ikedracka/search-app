@@ -14,7 +14,7 @@ import {
 
 
 const client = new ApolloClient({
-  uri: 'https://plheadless.wpengine.com/graphql/',
+  uri: 'https://headlesspl.wpengine.com/graphql/',
   cache: new InMemoryCache(),
   fetchOptions: {
     mode: 'no-cors',
