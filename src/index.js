@@ -57,7 +57,7 @@ function Posts() {
   return data.posts.nodes.map(({title,content}) => (
     <div key={title}>
         <h3>{title}</h3>
-        <p>{content}</p>
+        <p>{content.replace(/<\/?[^>]+(>|$)/g, "")}</p>
     </div>
   ))
 }
