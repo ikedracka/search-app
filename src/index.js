@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import { render } from 'react-dom';
 import Complete from './Complete';
-import SearchResults from './searchClient';
+import SearchResults from './SearchResults';
 import reportWebVitals from './reportWebVitals';
 
 import {
