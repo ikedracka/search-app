@@ -79,7 +79,6 @@ function Posts() {
     <ApolloProvider client={client}>
       <Hello />
       <Complete />
-      <Posts />
       <SearchResults />
     </ApolloProvider>,
     document.getElementById('root'),

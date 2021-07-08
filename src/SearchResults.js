@@ -33,12 +33,12 @@ function SearchResults() {
     if (data.posts.nodes.length===0) {
       return (
         <div>
-          <h2>No results</h2>
+          <p>No results</p>
         </div>
       )
     }
     return data.posts.nodes.map(({title,content}) => (
-      <div key={title}>
+        <div key={title}>
           <h3>{title}</h3>
           <p>{content.replace(/<\/?[^>]+(>|$)/g, "")}</p>
       </div>
