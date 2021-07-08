@@ -1,7 +1,8 @@
 import React from 'react';
 import './index.css';
 import { render } from 'react-dom';
-// import App from './App';
+import Complete from './Complete';
+import SearchResults from './searchClient';
 import reportWebVitals from './reportWebVitals';
 
 import {
@@ -72,11 +73,14 @@ function Posts() {
       </div>
     );
   }
+
   
   render(
     <ApolloProvider client={client}>
       <Hello />
+      <Complete />
       <Posts />
+      <SearchResults />
     </ApolloProvider>,
     document.getElementById('root'),
   );
